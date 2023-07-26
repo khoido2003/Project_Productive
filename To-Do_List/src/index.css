@@ -1,0 +1,560 @@
+/* const initialItems = [
+  {
+    id: 1,
+    header: `Design`,
+    description: `I've attached 2 concepts that will give you an idea to reproduce
+  but with a new look and feel. We'd like to keep the colors similar
+  but you can add diffrent colors.`,
+    backgroundColor: "purple-task",
+  },
+  {
+    id: 2,
+    header: `Design`,
+    description: `I've attached 2 concepts that will give you an idea to reproduce
+  but with a new look and feel. We'd like to keep the colors similar
+  but you can add diffrent colors.`,
+    backgroundColor: "pink-task",
+  },
+  {
+    id: 3,
+    header: `Design`,
+    description: `I've attached 2 concepts that will give you an idea to reproduce
+  but with a new look and feel. We'd like to keep the colors similar
+  but you can add diffrent colors.`,
+    backgroundColor: "green-task",
+  },
+  {
+    id: 4,
+    header: `Design`,
+    description: `I've attached 2 concepts that will give you an idea to reproduce
+  but with a new look and feel. We'd like to keep the colors similar
+  but you can add diffrent colors.`,
+    backgroundColor: "yellow-task",
+  },
+]; */
+
+@import url("https://fonts.googleapis.com/css2?family=REM:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 2.4rem;
+  color: #ffffffd6;
+  font-family: "REM", sans-serif;
+  font-weight: 500;
+  background-color: #303642;
+}
+
+body::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #8888888b; /* Color of the thumb */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* /////////////////////////////////////// */
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.new-task {
+  background-color: #8b8f9741;
+  padding: 2rem;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.new-task div {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+.new-task > div button {
+  width: 2rem;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.input-label {
+  display: block;
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.input {
+  height: 3rem;
+  width: 19.5rem;
+  margin-bottom: 1.6rem;
+  background-color: #3a3f49b9;
+  padding: 2rem 1rem;
+  border-radius: 5px;
+  border: none;
+  /* outline: none; */
+  color: #fff;
+}
+
+.input-description {
+  border-radius: 5px;
+  background-color: #3a3f49b9;
+  color: #fff;
+  padding: 1rem;
+  border: none;
+  margin-bottom: 1rem;
+}
+
+.input::placeholder {
+  color: #9c9c9c;
+}
+
+.input-description::placeholder {
+  color: #9c9c9c;
+}
+
+.task-color {
+  margin-bottom: 7rem;
+  padding: 1.4rem;
+  background-color: #3a3f49b9;
+  color: #9c9c9c;
+  border: none;
+  cursor: pointer;
+}
+
+.task-color option {
+  cursor: pointer;
+}
+
+.task-btn {
+  display: block;
+  color: #fff;
+  padding: 1.6rem;
+  width: 100%;
+  background-color: #ff7461;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.task-btn:hover {
+  background-color: #ff8271;
+}
+/* //////////////////////////////////// */
+
+.container {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr;
+  /* grid-template-rows: 85rem; */
+  column-gap: 2rem;
+  row-gap: 2rem;
+
+  width: 95%;
+  height: 90%;
+  margin: 1rem auto;
+  padding: 2rem;
+  margin-bottom: 4rem;
+}
+
+.navbar {
+  background-color: #3d4552;
+  border-radius: 9px;
+  /* margin-bottom: 3rem; */
+}
+
+.content {
+  background-color: #3d4552;
+  padding: 2.6rem;
+  border-radius: 9px;
+  /* margin-bottom: 3rem; */
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  row-gap: 5rem;
+}
+
+.content-title {
+  grid-column: 1 / 2;
+  justify-self: start;
+  align-self: start;
+  padding: 2rem;
+  background-color: #8b8f9726;
+  border-radius: 10px;
+}
+
+.date {
+  grid-column: 2/-1;
+  justify-self: end;
+  align-self: start;
+  padding: 2rem;
+  /* background-color: #8b8f9726; */
+  margin-right: 1rem;
+  border-radius: 10px;
+  font-size: 2rem;
+}
+
+.tab {
+  width: 95%;
+  height: 75vh;
+  background-color: #8b8f9709;
+  border-radius: 9px;
+  padding: 2rem 0.4rem;
+}
+
+.task-container {
+  overflow-y: scroll;
+  height: calc(100% - 4.6rem);
+}
+
+.task-container::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+
+.task-container::-webkit-scrollbar-thumb {
+  background-color: #8888881e; /* Color of the thumb */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.tab h4 {
+  margin-bottom: 1.6rem;
+}
+
+.task {
+  width: 85%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: 9px;
+  /* aspect-ratio: 3 /4; */
+  position: relative;
+  cursor: grab;
+}
+
+.task h5 {
+  font-weight: bold;
+}
+
+/* .task h5 {
+  font-size: 3rem;
+  background: -webkit-linear-gradient(#000000, #434343);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+
+.btn-progress,
+.btn-finished {
+  border: none;
+  padding: 0.4rem;
+  margin-bottom: 3rem;
+  margin-right: 0.3rem;
+  border-radius: 5px;
+  box-shadow: 0 1.2rem 1.2rem rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+}
+
+.btn-progress {
+  background-color: #ff8271;
+  color: #fff;
+}
+
+.btn-progress:active {
+  background-color: #ff922b;
+  box-shadow: 0 1.2rem 1.2rem rgba(0, 0, 0, 0.08);
+}
+
+.btn-finished {
+  background-color: #7950f2;
+  color: #fff;
+}
+
+.btn-finished:active {
+  background-color: #845ef7;
+  box-shadow: 0 1.2rem 1.2rem rgba(0, 0, 0, 0.08);
+}
+
+.btn-close {
+  width: 2rem;
+  aspect-ratio: 1 / 1;
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  /* background-color: #3d455277;
+  color: #ffffffc5; */
+  border-radius: 50%;
+
+  position: absolute;
+  right: 1.5rem;
+  top: 2.65rem;
+}
+
+.btn-navbar {
+  width: 100%;
+  background-color: #ff7461;
+  padding: 2rem 0;
+  border: none;
+  border-radius: 9px;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 1.2rem 1.2rem rgba(0, 0, 0, 0.16);
+  margin-bottom: 2rem;
+}
+
+.btn-navbar:hover {
+  background-color: #ff8271;
+}
+
+.btn-navbar:active {
+  background-color: #ff8271;
+  box-shadow: 0 1.2rem 1.2rem rgba(0, 0, 0, 0.08);
+}
+
+.btn-navbar:disabled {
+  background-color: #74777d33;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.btn-navbar-secondary {
+  background-color: #49505d73;
+}
+
+.btn-navbar-secondary:hover {
+  background-color: #49505d2d;
+}
+
+.btn-navbar-secondary:active {
+  background-color: #49505d31;
+  box-shadow: 0 1.2rem 1.2rem rgba(0, 0, 0, 0.08);
+}
+.btn-navbar-secondary:disabled {
+  background-color: #74777d33;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.btn-close-finished {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.9rem;
+  background-color: #ff7461;
+  border-radius: 50%;
+}
+
+.btn-close:hover {
+  color: #ffffffb1;
+}
+
+.btn-close:active {
+  color: #fff;
+}
+
+.task-finished {
+  color: #8b8687;
+  background-color: #a3a1a186;
+}
+
+.task-finished h5 {
+  text-decoration: line-through;
+  text-decoration-thickness: 0.2em;
+}
+
+.purple-task {
+  background-color: #ab9df2;
+  color: #000;
+}
+
+.pink-task {
+  background-color: #ff6188;
+  color: #000;
+}
+
+.green-task {
+  background-color: #a9dc76;
+  color: #000;
+}
+
+.blue-task {
+  background-color: #78dce8;
+  color: #000;
+}
+
+.yellow-task {
+  background-color: #ffd866;
+  color: #000;
+}
+
+.orange-task {
+  background-color: #ff7461;
+  color: #000;
+}
+
+.task > span {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-left: 2rem;
+}
+
+.task h5 {
+  margin-bottom: 1.8rem;
+}
+
+.task-icon {
+  width: 3rem;
+}
+
+.task-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  font-weight: bold;
+}
+
+.task-description {
+  font-size: 1.4rem;
+  line-height: 1.3;
+}
+
+.copyright {
+  grid-column: 1 / -1;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.documentation-container {
+  width: 100%;
+  background-color: #505763;
+  border-radius: 9px;
+}
+
+.documentation-item {
+  font-size: 1.3rem;
+  padding: 1rem;
+}
+
+.quotes-container {
+  padding: 1rem;
+  font-size: 1.3rem;
+}
+
+.quotes-btn {
+  display: block;
+  color: #fff;
+  padding: 1.3rem;
+  width: 100%;
+  background-color: #ab9df2;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+
+.quotes-btn:hover {
+  background-color: #9f90e8;
+}
+
+.loader {
+  padding: 4rem;
+  border-radius: 9px;
+  background-color: #343a45;
+  text-align: center;
+  font-size: 2rem;
+  color: #ff7461;
+  margin-bottom: 1.5rem;
+}
+
+@media only screen and (max-width: 80em) {
+  html {
+    font-size: 50%;
+  }
+
+  .input {
+    width: 23.5rem;
+  }
+
+  .content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tab-finished {
+    grid-column: 1 / -1;
+  }
+}
+
+@media only screen and (max-width: 60em) {
+  .navbar {
+    grid-column: 1 / -1;
+  }
+  .tab-finished {
+    grid-column: 3 / -1;
+  }
+
+  .content {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column: 1 / -1;
+    grid-row: 1/ 2;
+  }
+
+  .btn-navbar {
+    width: 100%;
+  }
+
+  .new-task > div button {
+    width: 4rem;
+    font-size: 2rem;
+  }
+}
+@media only screen and (max-width: 53em) {
+  .content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tab-finished {
+    grid-column: 1 / -1;
+  }
+
+  .btn-close {
+    top: 2.5rem;
+    font-size: 2.4rem;
+    background-color: #3d455277;
+    color: #ffffffc5;
+    border-radius: 50%;
+    width: 3rem;
+    aspect-ratio: 1 / 1;
+  }
+
+  .btn-progress {
+    padding: 1rem;
+  }
+
+  .btn-finished {
+    padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 43em) {
+  .tab {
+    grid-column: 1 / -1;
+  }
+}
